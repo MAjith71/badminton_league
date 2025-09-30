@@ -1,0 +1,57 @@
+<h1 style="text-align: center; color: #2c3e50; font-family: Arial, sans-serif; margin-bottom: 20px;">
+  Leaderboard
+</h1>
+
+<style>
+  table.leaderboard {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+
+  table.leaderboard th {
+    background-color: #3498db;
+    color: white;
+    padding: 10px;
+  }
+
+  table.leaderboard td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  table.leaderboard tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  table.leaderboard tr:hover {
+    background-color: #d1ecf1;
+  }
+
+  table.leaderboard td:first-child {
+    font-weight: bold;
+  }
+</style>
+
+<table class="leaderboard">
+  <tr>
+    <th>Rank</th>
+    <th>Player</th>
+    <th>Matches</th>
+    <th>Wins</th>
+    <th>Losses</th>
+    <th>Winning %</th>
+  </tr>
+  <% @players.each_with_index do |player, index| %>
+    <tr>
+      <td><%= index + 1 %></td>
+      <td><%= player.name %></td>
+      <td><%= player.total_matches %></td>
+      <td><%= player.wins %></td>
+      <td><%= player.losses %></td>
+      <td><%= player.winning_percentage %>%</td>
+    </tr>
+  <% end %>
+</table>

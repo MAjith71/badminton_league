@@ -1,0 +1,23 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Match History</h1>
+
+<table class="leaderboard">
+  <tr>
+    <th>Match Date</th>
+    <th>Winner</th>
+    <th>Loser</th>
+  </tr>
+  <% @matches.each do |match| %>
+    <tr>
+      <td><%= match.match_date.strftime("%d %b %Y") %></td>
+      <td><%= match.winner.name %></td>
+      <td><%= match.loser.name %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br>
+<%= link_to "Add New Match", new_match_path, class: "button" %>
+
+

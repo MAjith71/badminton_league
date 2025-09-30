@@ -1,0 +1,68 @@
+<h1 style="text-align: center; color: #2c3e50; font-family: Arial, sans-serif; margin-bottom: 20px;">
+  Add Player
+</h1>
+
+<style>
+  .player-form {
+    width: 50%;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+  }
+
+  .player-form div {
+    margin-bottom: 15px;
+  }
+
+  .player-form label {
+    display: inline-block;
+    width: 100px;
+    font-weight: bold;
+  }
+
+  .player-form input[type="text"] {
+    padding: 8px;
+    width: 70%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .player-form input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .player-form input[type="submit"]:hover {
+    background-color: #2980b9;
+  }
+
+  .back-link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #3498db;
+    font-weight: bold;
+  }
+
+  .back-link:hover {
+    color: #2980b9;
+  }
+</style>
+
+<div class="player-form">
+  <%= form_with model: @player do |f| %>
+    <div>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+
+    <%= f.submit "Save" %>
+  <% end %>
+</div>
+
+<%= link_to "Back", players_path, class: "back-link" %>

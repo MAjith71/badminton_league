@@ -1,0 +1,67 @@
+<% content_for :title, "New match" %>
+
+<h1 style="text-align: center; color: #2c3e50; font-family: Arial, sans-serif; margin-bottom: 20px;">
+  Record Match
+</h1>
+
+<style>
+  .match-form {
+    width: 50%;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+  }
+
+  .match-form div {
+    margin-bottom: 15px;
+  }
+
+  .match-form label {
+    display: inline-block;
+    width: 100px;
+    font-weight: bold;
+  }
+
+  .match-form input[type="text"],
+  .match-form select,
+  .match-form input[type="date"] {
+    padding: 8px;
+    width: 70%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .match-form input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .match-form input[type="submit"]:hover {
+    background-color: #2980b9;
+  }
+</style>
+
+<div class="match-form">
+  <%= form_with model: @match do |f| %>
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <%= f.label :match_date, "Match Date" %>
+      <%= f.date_field :match_date, value: @match.match_date || Date.today %>
+    </div>
+
+    <div>
+      <%= f.label :winner_id, "Winner" %>
+      <%= f.collection_select :winner_id, Player.all, :id, :name %>
+    </div>
+
+    <div>
+      <%= f.label :loser_id, "Loser" %>
+      <%= f.collection_select :loser_id, Player.all, :id, :name %>
+    </div>
+
+    <%= f.submit "Save Match" %>
+  <% end %>
+</div>
